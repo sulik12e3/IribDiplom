@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище IribModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="IdRole" Type="int" />
+  </EntityType>
+  <EntityType Name="АнализРентабельности">
+    <Key>
+      <PropertyRef Name="Год" />
+    </Key>
+    <Property Name="Год" Type="int" Nullable="false" />
+    <Property Name="ПрибыльОтПродаж" Type="bigint" />
+    <Property Name="ПрибыльДоНалогообложения" Type="bigint" />
+    <Property Name="ЧистаяПрибыль" Type="bigint" />
+    <Property Name="ВыручкаОтПродаж" Type="bigint" />
+    <Property Name="СредняяСтоимостьАктивов" Type="bigint" />
+    <Property Name="СобственныйКапитал" Type="bigint" />
+  </EntityType>
+  <EntityType Name="АнализрентабельностивПроцентах">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ЭкономическкаяРентабельность" Type="float" />
+    <Property Name="БухгалтерскаяРентабельность" Type="float" />
+    <Property Name="РентабельностьСобственногоКапитала" Type="float" />
+    <Property Name="КоэффицентКапитализации" Type="float" />
+    <Property Name="ОборачиваемостьАктивов" Type="float" />
+    <Property Name="RentabYearID" Type="int" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ДинамикаПроизводительностиТруда">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDYearWorkPerf" Type="int" />
+    <Property Name="ОбъемРабот" Type="int" />
+    <Property Name="Контингент" Type="int" />
+    <Property Name="ГодовойФондОплатыТруда" Type="int" />
+    <Property Name="СреднемесячнаяОплатТруда" Type="int" />
+    <Property Name="ПроизводительностьТруда" Type="float" />
+  </EntityType>
+  <EntityType Name="ОценкаВаловогоДохода">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDYearincome" Type="int" />
+    <Property Name="Товарооборот" Type="int" />
+    <Property Name="ВаловойДоход" Type="int" />
+    <Property Name="УровеньВаловогоДоходаТоварообороту" Type="float" />
+    <Property Name="СебестоимостьТоваров" Type="int" />
+    <Property Name="УровеньВаловогоДоходаКСебес" Type="int" />
+    <Property Name="ИздержкиОбращения" Type="int" />
+    <Property Name="УрВалДоходаКИздерж" Type="float" />
+  </EntityType>
+  <EntityType Name="ФакторныйАнализПрибыли">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="FactoryYearID" Type="int" />
+    <Property Name="ВидПродукции" Type="nvarchar" MaxLength="50" />
+    <Property Name="КолвоРеализПродукции" Type="bigint" />
+    <Property Name="СредняяРеализПродукции" Type="bigint" />
+    <Property Name="СебестоимостьПродукции" Type="bigint" />
+    <Property Name="ИзменениеСуммыПрибыли" Type="bigint" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_User_Role">
+    <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="IdRole" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_АнализрентабельностивПроцентах_АнализРентабельности">
+    <End Role="АнализРентабельности" Type="Self.АнализРентабельности" Multiplicity="0..1" />
+    <End Role="АнализрентабельностивПроцентах" Type="Self.АнализрентабельностивПроцентах" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="АнализРентабельности">
+        <PropertyRef Name="Год" />
+      </Principal>
+      <Dependent Role="АнализрентабельностивПроцентах">
+        <PropertyRef Name="RentabYearID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ДинамикаПроизводительностиТруда_АнализРентабельности">
+    <End Role="АнализРентабельности" Type="Self.АнализРентабельности" Multiplicity="0..1" />
+    <End Role="ДинамикаПроизводительностиТруда" Type="Self.ДинамикаПроизводительностиТруда" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="АнализРентабельности">
+        <PropertyRef Name="Год" />
+      </Principal>
+      <Dependent Role="ДинамикаПроизводительностиТруда">
+        <PropertyRef Name="IDYearWorkPerf" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ОценкаВаловогоДохода_АнализРентабельности">
+    <End Role="АнализРентабельности" Type="Self.АнализРентабельности" Multiplicity="0..1" />
+    <End Role="ОценкаВаловогоДохода" Type="Self.ОценкаВаловогоДохода" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="АнализРентабельности">
+        <PropertyRef Name="Год" />
+      </Principal>
+      <Dependent Role="ОценкаВаловогоДохода">
+        <PropertyRef Name="IDYearincome" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ФакторныйАнализПрибыли_АнализРентабельности">
+    <End Role="АнализРентабельности" Type="Self.АнализРентабельности" Multiplicity="0..1" />
+    <End Role="ФакторныйАнализПрибыли" Type="Self.ФакторныйАнализПрибыли" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="АнализРентабельности">
+        <PropertyRef Name="Год" />
+      </Principal>
+      <Dependent Role="ФакторныйАнализПрибыли">
+        <PropertyRef Name="FactoryYearID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="Хранилище IribModelContainer">
+    <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="АнализРентабельности" EntityType="Self.АнализРентабельности" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="АнализрентабельностивПроцентах" EntityType="Self.АнализрентабельностивПроцентах" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ДинамикаПроизводительностиТруда" EntityType="Self.ДинамикаПроизводительностиТруда" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ОценкаВаловогоДохода" EntityType="Self.ОценкаВаловогоДохода" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ФакторныйАнализПрибыли" EntityType="Self.ФакторныйАнализПрибыли" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="FK_АнализрентабельностивПроцентах_АнализРентабельности" Association="Self.FK_АнализрентабельностивПроцентах_АнализРентабельности">
+      <End Role="АнализРентабельности" EntitySet="АнализРентабельности" />
+      <End Role="АнализрентабельностивПроцентах" EntitySet="АнализрентабельностивПроцентах" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ДинамикаПроизводительностиТруда_АнализРентабельности" Association="Self.FK_ДинамикаПроизводительностиТруда_АнализРентабельности">
+      <End Role="АнализРентабельности" EntitySet="АнализРентабельности" />
+      <End Role="ДинамикаПроизводительностиТруда" EntitySet="ДинамикаПроизводительностиТруда" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ОценкаВаловогоДохода_АнализРентабельности" Association="Self.FK_ОценкаВаловогоДохода_АнализРентабельности">
+      <End Role="АнализРентабельности" EntitySet="АнализРентабельности" />
+      <End Role="ОценкаВаловогоДохода" EntitySet="ОценкаВаловогоДохода" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ФакторныйАнализПрибыли_АнализРентабельности" Association="Self.FK_ФакторныйАнализПрибыли_АнализРентабельности">
+      <End Role="АнализРентабельности" EntitySet="АнализРентабельности" />
+      <End Role="ФакторныйАнализПрибыли" EntitySet="ФакторныйАнализПрибыли" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

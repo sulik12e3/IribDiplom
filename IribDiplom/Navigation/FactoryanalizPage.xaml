@@ -1,0 +1,35 @@
+﻿<Page x:Class="IribDiplom.Navigation.FactoryanalizPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:IribDiplom.Navigation"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="FactoryanalizPage">
+
+    <Grid Background="#ffbf94">
+        <Grid.RowDefinitions>
+                <RowDefinition Height="0.8*"/>
+                <RowDefinition Height="0.2*"/>
+            </Grid.RowDefinitions>
+            <DataGrid  Width="800" Name="dgprocRentabs" AutoGenerateColumns="False" CanUserAddRows="False" HorizontalAlignment="Left"  Background="#ffbf94" SelectionChanged="dgprocRentabs_SelectionChanged" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="*" Header="Вид продукции" Binding="{Binding ВидПродукции}"/>
+                <DataGridTextColumn Width="*" Header="Кол-во Реализованной&#xD;&#xA; Продукции" Binding="{Binding КолвоРеализПродукции}"/>
+                <DataGridTextColumn Width="*" Header="Средняя Реализ;&#xA; Продукции" Binding="{Binding СредняяРеализПродукции}"/>
+                    <DataGridTextColumn Width="*" Header="Коэффицент&#xD;&#xA; Капитализации" Binding="{Binding КоэффицентКапитализации}"/>
+                    <DataGridTextColumn Width="*" Header="Оборачиваемость&#xD;&#xA; Активов" Binding="{Binding ОборачиваемостьАктивов}"/>
+
+                </DataGrid.Columns>
+
+            </DataGrid>
+            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center"  >
+                <Button Name="ProcRantabsaddbtn" Click="ProcRantabsaddbtn_Click" Content="добавить"  Margin="6" />
+                <Button Name="ProcRentabsDeletebtn"  Click="ProcRentabsDeletebtn_Click" Content="Удалить"  Margin="6" />
+                <Button Name="ProcRentabChangebtn" Click="ProcRentabChangebtn_Click" Content="Редактировать"  Margin="6"/>
+                <Button Name="ProcRentabPrintbtn" Click="ProcRentabPrintbtn_Click" Content="печать"  Margin="6" />
+            </StackPanel>
+            <Button Style="{StaticResource BackButton}" Name="Backbtn" Click="Backbtn_Click" Margin="0,70,10,0" Grid.Row="1"/>
+        </Grid>
+</Page>

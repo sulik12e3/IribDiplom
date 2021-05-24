@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c8064b7bacbf480fb5d39593da7610b0" Name="Diagram1">
+        <EntityTypeShape EntityType="IribModel.Role" Width="1.5" PointX="5.75" PointY="1.125" />
+        <EntityTypeShape EntityType="IribModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="3.75" />
+        <EntityTypeShape EntityType="IribModel.User" Width="1.5" PointX="8" PointY="0.875" />
+        <EntityTypeShape EntityType="IribModel.АнализРентабельности" Width="1.5" PointX="0.75" PointY="6.375" />
+        <EntityTypeShape EntityType="IribModel.АнализрентабельностивПроцентах" Width="2.5" PointX="3" PointY="11.75" />
+        <EntityTypeShape EntityType="IribModel.ДинамикаПроизводительностиТруда" Width="1.5" PointX="3" PointY="1.5" />
+        <EntityTypeShape EntityType="IribModel.ОценкаВаловогоДохода" Width="1.5" PointX="3" PointY="4.75" />
+        <EntityTypeShape EntityType="IribModel.ФакторныйАнализПрибыли" Width="1.5" PointX="3" PointY="8.5" />
+        <AssociationConnector Association="IribModel.FK_User_Role" />
+        <AssociationConnector Association="IribModel.FK_АнализрентабельностивПроцентах_АнализРентабельности" />
+        <AssociationConnector Association="IribModel.FK_ДинамикаПроизводительностиТруда_АнализРентабельности" />
+        <AssociationConnector Association="IribModel.FK_ОценкаВаловогоДохода_АнализРентабельности" />
+        <AssociationConnector Association="IribModel.FK_ФакторныйАнализПрибыли_АнализРентабельности" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

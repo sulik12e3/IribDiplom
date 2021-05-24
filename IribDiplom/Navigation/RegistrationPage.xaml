@@ -1,0 +1,33 @@
+﻿<Page x:Class="IribDiplom.Navigation.RegistrationPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:IribDiplom.Navigation"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Регистрация">
+
+    <Grid Background="#ffbf94">
+        <StackPanel Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Background="#ffbf94">
+            <StackPanel Orientation="Horizontal" Margin="6">
+                <TextBlock Text="Введите логин:" Width="160"/>
+                <TextBox Name="txblogin"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="6">
+                <TextBlock Text="Введите пароль:" Width="160"/>
+                <PasswordBox Name="psw"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="6">
+                <TextBlock Text="Повторите пароль:" Width="160"/>
+                <PasswordBox PasswordChanged="psw1_PasswordChanged" Name="psw1"/>
+               
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Center">
+                <Button IsEnabled="False" Name="createbtn" Content="Создать аккаунт" Margin="6"  Click="createbtn_Click" Height="27" Width="162"/>
+            </StackPanel>
+        </StackPanel>
+        <Button Content="Назад" Name="back" Click="back_Click" Style="{StaticResource BackButton}"/>
+
+    </Grid>
+</Page>

@@ -1,0 +1,27 @@
+﻿<Window x:Class="IribDiplom.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:IribDiplom"
+        mc:Ignorable="d"
+        Title="Главная страница" Height="450" Width="800">
+    <Grid Background="#ffbf94">
+         <Grid.RowDefinitions >
+                <RowDefinition Height="82*"/>
+                <RowDefinition Height="337*"/>
+            </Grid.RowDefinitions>
+        <StackPanel>
+            <StackPanel Background="#ffbf94" Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <Image Source="Classes/LogoIrib.png" Height="84"/>
+                <TextBlock FontSize="25pt" FontWeight="Bold" Margin="10" VerticalAlignment="Bottom" HorizontalAlignment="Center" Text="{Binding ElementName=frm, Path=Content.Title}" />
+
+            </StackPanel>
+        </StackPanel>
+
+        <Frame NavigationUIVisibility="Hidden" Name="frm" Grid.Row="1" Grid.Column="0"     />
+
+
+
+    </Grid>
+</Window>

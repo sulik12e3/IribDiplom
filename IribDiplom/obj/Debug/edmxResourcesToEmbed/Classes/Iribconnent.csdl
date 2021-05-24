@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="IribModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="IribEntities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(IribModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(IribModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <EntitySet Name="Role" EntityType="IribModel.Role" />
+    <EntitySet Name="sysdiagrams" EntityType="IribModel.sysdiagrams" />
+    <EntitySet Name="User" EntityType="IribModel.User" />
+    <EntitySet Name="АнализРентабельности" EntityType="IribModel.АнализРентабельности" />
+    <EntitySet Name="АнализрентабельностивПроцентах" EntityType="IribModel.АнализрентабельностивПроцентах" />
+    <EntitySet Name="ДинамикаПроизводительностиТруда" EntityType="IribModel.ДинамикаПроизводительностиТруда" />
+    <EntitySet Name="ОценкаВаловогоДохода" EntityType="IribModel.ОценкаВаловогоДохода" />
+    <EntitySet Name="ФакторныйАнализПрибыли" EntityType="IribModel.ФакторныйАнализПрибыли" />
+    <AssociationSet Name="FK_User_Role" Association="IribModel.FK_User_Role">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="FK_АнализрентабельностивПроцентах_АнализРентабельности" Association="IribModel.FK_АнализрентабельностивПроцентах_АнализРентабельности">
+      <End Role="АнализРентабельности" EntitySet="АнализРентабельности" />
+      <End Role="АнализрентабельностивПроцентах" EntitySet="АнализрентабельностивПроцентах" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ДинамикаПроизводительностиТруда_АнализРентабельности" Association="IribModel.FK_ДинамикаПроизводительностиТруда_АнализРентабельности">
+      <End Role="АнализРентабельности" EntitySet="АнализРентабельности" />
+      <End Role="ДинамикаПроизводительностиТруда" EntitySet="ДинамикаПроизводительностиТруда" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ОценкаВаловогоДохода_АнализРентабельности" Association="IribModel.FK_ОценкаВаловогоДохода_АнализРентабельности">
+      <End Role="АнализРентабельности" EntitySet="АнализРентабельности" />
+      <End Role="ОценкаВаловогоДохода" EntitySet="ОценкаВаловогоДохода" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ФакторныйАнализПрибыли_АнализРентабельности" Association="IribModel.FK_ФакторныйАнализПрибыли_АнализРентабельности">
+      <End Role="АнализРентабельности" EntitySet="АнализРентабельности" />
+      <End Role="ФакторныйАнализПрибыли" EntitySet="ФакторныйАнализПрибыли" />
+    </AssociationSet>
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="User" Relationship="IribModel.FK_User_Role" FromRole="Role" ToRole="User" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Login" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IdRole" Type="Int32" />
+    <NavigationProperty Name="Role" Relationship="IribModel.FK_User_Role" FromRole="User" ToRole="Role" />
+  </EntityType>
+  <EntityType Name="АнализРентабельности">
+    <Key>
+      <PropertyRef Name="Год" />
+    </Key>
+    <Property Name="Год" Type="Int32" Nullable="false" />
+    <Property Name="ПрибыльОтПродаж" Type="Int64" />
+    <Property Name="ПрибыльДоНалогообложения" Type="Int64" />
+    <Property Name="ЧистаяПрибыль" Type="Int64" />
+    <Property Name="ВыручкаОтПродаж" Type="Int64" />
+    <Property Name="СредняяСтоимостьАктивов" Type="Int64" />
+    <Property Name="СобственныйКапитал" Type="Int64" />
+    <NavigationProperty Name="АнализрентабельностивПроцентах" Relationship="IribModel.FK_АнализрентабельностивПроцентах_АнализРентабельности" FromRole="АнализРентабельности" ToRole="АнализрентабельностивПроцентах" />
+    <NavigationProperty Name="ДинамикаПроизводительностиТруда" Relationship="IribModel.FK_ДинамикаПроизводительностиТруда_АнализРентабельности" FromRole="АнализРентабельности" ToRole="ДинамикаПроизводительностиТруда" />
+    <NavigationProperty Name="ОценкаВаловогоДохода" Relationship="IribModel.FK_ОценкаВаловогоДохода_АнализРентабельности" FromRole="АнализРентабельности" ToRole="ОценкаВаловогоДохода" />
+    <NavigationProperty Name="ФакторныйАнализПрибыли" Relationship="IribModel.FK_ФакторныйАнализПрибыли_АнализРентабельности" FromRole="АнализРентабельности" ToRole="ФакторныйАнализПрибыли" />
+  </EntityType>
+  <EntityType Name="АнализрентабельностивПроцентах">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ЭкономическкаяРентабельность" Type="Double" />
+    <Property Name="БухгалтерскаяРентабельность" Type="Double" />
+    <Property Name="РентабельностьСобственногоКапитала" Type="Double" />
+    <Property Name="КоэффицентКапитализации" Type="Double" />
+    <Property Name="ОборачиваемостьАктивов" Type="Double" />
+    <Property Name="RentabYearID" Type="Int32" />
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="АнализРентабельности" Relationship="IribModel.FK_АнализрентабельностивПроцентах_АнализРентабельности" FromRole="АнализрентабельностивПроцентах" ToRole="АнализРентабельности" />
+  </EntityType>
+  <EntityType Name="ДинамикаПроизводительностиТруда">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDYearWorkPerf" Type="Int32" />
+    <Property Name="ОбъемРабот" Type="Int32" />
+    <Property Name="Контингент" Type="Int32" />
+    <Property Name="ГодовойФондОплатыТруда" Type="Int32" />
+    <Property Name="СреднемесячнаяОплатТруда" Type="Int32" />
+    <Property Name="ПроизводительностьТруда" Type="Double" />
+    <NavigationProperty Name="АнализРентабельности" Relationship="IribModel.FK_ДинамикаПроизводительностиТруда_АнализРентабельности" FromRole="ДинамикаПроизводительностиТруда" ToRole="АнализРентабельности" />
+  </EntityType>
+  <EntityType Name="ОценкаВаловогоДохода">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDYearincome" Type="Int32" />
+    <Property Name="Товарооборот" Type="Int32" />
+    <Property Name="ВаловойДоход" Type="Int32" />
+    <Property Name="УровеньВаловогоДоходаТоварообороту" Type="Double" />
+    <Property Name="СебестоимостьТоваров" Type="Int32" />
+    <Property Name="УровеньВаловогоДоходаКСебес" Type="Int32" />
+    <Property Name="ИздержкиОбращения" Type="Int32" />
+    <Property Name="УрВалДоходаКИздерж" Type="Double" />
+    <NavigationProperty Name="АнализРентабельности" Relationship="IribModel.FK_ОценкаВаловогоДохода_АнализРентабельности" FromRole="ОценкаВаловогоДохода" ToRole="АнализРентабельности" />
+  </EntityType>
+  <EntityType Name="ФакторныйАнализПрибыли">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="FactoryYearID" Type="Int32" />
+    <Property Name="ВидПродукции" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="КолвоРеализПродукции" Type="Int64" />
+    <Property Name="СредняяРеализПродукции" Type="Int64" />
+    <Property Name="СебестоимостьПродукции" Type="Int64" />
+    <Property Name="ИзменениеСуммыПрибыли" Type="Int64" />
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="АнализРентабельности" Relationship="IribModel.FK_ФакторныйАнализПрибыли_АнализРентабельности" FromRole="ФакторныйАнализПрибыли" ToRole="АнализРентабельности" />
+  </EntityType>
+  <Association Name="FK_User_Role">
+    <End Type="IribModel.Role" Role="Role" Multiplicity="0..1" />
+    <End Type="IribModel.User" Role="User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="IdRole" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_АнализрентабельностивПроцентах_АнализРентабельности">
+    <End Type="IribModel.АнализРентабельности" Role="АнализРентабельности" Multiplicity="0..1" />
+    <End Type="IribModel.АнализрентабельностивПроцентах" Role="АнализрентабельностивПроцентах" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="АнализРентабельности">
+        <PropertyRef Name="Год" />
+      </Principal>
+      <Dependent Role="АнализрентабельностивПроцентах">
+        <PropertyRef Name="RentabYearID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ДинамикаПроизводительностиТруда_АнализРентабельности">
+    <End Type="IribModel.АнализРентабельности" Role="АнализРентабельности" Multiplicity="0..1" />
+    <End Type="IribModel.ДинамикаПроизводительностиТруда" Role="ДинамикаПроизводительностиТруда" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="АнализРентабельности">
+        <PropertyRef Name="Год" />
+      </Principal>
+      <Dependent Role="ДинамикаПроизводительностиТруда">
+        <PropertyRef Name="IDYearWorkPerf" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ОценкаВаловогоДохода_АнализРентабельности">
+    <End Type="IribModel.АнализРентабельности" Role="АнализРентабельности" Multiplicity="0..1" />
+    <End Type="IribModel.ОценкаВаловогоДохода" Role="ОценкаВаловогоДохода" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="АнализРентабельности">
+        <PropertyRef Name="Год" />
+      </Principal>
+      <Dependent Role="ОценкаВаловогоДохода">
+        <PropertyRef Name="IDYearincome" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ФакторныйАнализПрибыли_АнализРентабельности">
+    <End Type="IribModel.АнализРентабельности" Role="АнализРентабельности" Multiplicity="0..1" />
+    <End Type="IribModel.ФакторныйАнализПрибыли" Role="ФакторныйАнализПрибыли" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="АнализРентабельности">
+        <PropertyRef Name="Год" />
+      </Principal>
+      <Dependent Role="ФакторныйАнализПрибыли">
+        <PropertyRef Name="FactoryYearID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

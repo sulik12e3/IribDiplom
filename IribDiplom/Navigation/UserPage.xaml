@@ -1,0 +1,28 @@
+﻿<Page x:Class="IribDiplom.Navigation.UserPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:IribDiplom.Navigation"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="">
+
+    <Grid Background="#ffbf94">
+        <StackPanel  Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Center">
+            <Button Content="Анализ Рентабельности" Name="RentabCompany" Click="RentabCompany_Click" Margin="6" Height="45" Width="215" />
+            <Button Content="Процентные данные &#xD;&#xA;рентабельности" Name="FacktornyAnalizprocents" Click="FacktornyAnalizprocents_Click" Margin="6" Height="45" Width="215" FontSize="12"/>
+            <Button Content="Факторный анализ" Name="FacktornyAnaliz" Margin="6" Height="42" Width="215" Click="FacktornyAnaliz_Click_1" FontSize="12px"/>
+            <Button Name="DynemicperformBtn" Content="Динамика&#xD;&#xA; Производительности" Height="45" Width="215" Click="DynemicperformBtn_Click" FontSize="12px" Margin="6" />
+            <Button Name="еstimationwallbtn" Content="Оценка Валового Дохода" Click="еstimationwallbtn_Click" FontSize="12px" Height="45" Width="215"  Margin="6" />
+            
+            
+        </StackPanel>
+        <StackPanel  Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button Content="Прибыль от продажи продукции" Margin="6" Height="45" Width="215" />
+            <Button Content="Оценка влияния фондоотдачи" Margin="6" Height="45" Width="215"/>
+            <Button Content="Рентабельность продаж" Margin="6" Height="45" Width="215"/>
+            <Button Content="Изменение фондоотдачи" Margin="6" Height="45" Width="215"/>
+        </StackPanel>
+    </Grid>
+</Page>

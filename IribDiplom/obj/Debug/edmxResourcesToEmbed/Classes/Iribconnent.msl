@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище IribModelContainer" CdmEntityContainer="IribEntities">
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Хранилище IribModel.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Хранилище IribModel.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Хранилище IribModel.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Хранилище IribModel.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="IribModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Хранилище IribModel.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="IribModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Хранилище IribModel.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Хранилище IribModel.sp_upgraddiagrams" />
+    <EntitySetMapping Name="Role">
+      <EntityTypeMapping TypeName="IribModel.Role">
+        <MappingFragment StoreEntitySet="Role">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="IribModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User">
+      <EntityTypeMapping TypeName="IribModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="IdRole" ColumnName="IdRole" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="АнализРентабельности">
+      <EntityTypeMapping TypeName="IribModel.АнализРентабельности">
+        <MappingFragment StoreEntitySet="АнализРентабельности">
+          <ScalarProperty Name="СобственныйКапитал" ColumnName="СобственныйКапитал" />
+          <ScalarProperty Name="СредняяСтоимостьАктивов" ColumnName="СредняяСтоимостьАктивов" />
+          <ScalarProperty Name="ВыручкаОтПродаж" ColumnName="ВыручкаОтПродаж" />
+          <ScalarProperty Name="ЧистаяПрибыль" ColumnName="ЧистаяПрибыль" />
+          <ScalarProperty Name="ПрибыльДоНалогообложения" ColumnName="ПрибыльДоНалогообложения" />
+          <ScalarProperty Name="ПрибыльОтПродаж" ColumnName="ПрибыльОтПродаж" />
+          <ScalarProperty Name="Год" ColumnName="Год" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="АнализрентабельностивПроцентах">
+      <EntityTypeMapping TypeName="IribModel.АнализрентабельностивПроцентах">
+        <MappingFragment StoreEntitySet="АнализрентабельностивПроцентах">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="RentabYearID" ColumnName="RentabYearID" />
+          <ScalarProperty Name="ОборачиваемостьАктивов" ColumnName="ОборачиваемостьАктивов" />
+          <ScalarProperty Name="КоэффицентКапитализации" ColumnName="КоэффицентКапитализации" />
+          <ScalarProperty Name="РентабельностьСобственногоКапитала" ColumnName="РентабельностьСобственногоКапитала" />
+          <ScalarProperty Name="БухгалтерскаяРентабельность" ColumnName="БухгалтерскаяРентабельность" />
+          <ScalarProperty Name="ЭкономическкаяРентабельность" ColumnName="ЭкономическкаяРентабельность" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ДинамикаПроизводительностиТруда">
+      <EntityTypeMapping TypeName="IribModel.ДинамикаПроизводительностиТруда">
+        <MappingFragment StoreEntitySet="ДинамикаПроизводительностиТруда">
+          <ScalarProperty Name="ПроизводительностьТруда" ColumnName="ПроизводительностьТруда" />
+          <ScalarProperty Name="СреднемесячнаяОплатТруда" ColumnName="СреднемесячнаяОплатТруда" />
+          <ScalarProperty Name="ГодовойФондОплатыТруда" ColumnName="ГодовойФондОплатыТруда" />
+          <ScalarProperty Name="Контингент" ColumnName="Контингент" />
+          <ScalarProperty Name="ОбъемРабот" ColumnName="ОбъемРабот" />
+          <ScalarProperty Name="IDYearWorkPerf" ColumnName="IDYearWorkPerf" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ОценкаВаловогоДохода">
+      <EntityTypeMapping TypeName="IribModel.ОценкаВаловогоДохода">
+        <MappingFragment StoreEntitySet="ОценкаВаловогоДохода">
+          <ScalarProperty Name="УрВалДоходаКИздерж" ColumnName="УрВалДоходаКИздерж" />
+          <ScalarProperty Name="ИздержкиОбращения" ColumnName="ИздержкиОбращения" />
+          <ScalarProperty Name="УровеньВаловогоДоходаКСебес" ColumnName="УровеньВаловогоДоходаКСебес" />
+          <ScalarProperty Name="СебестоимостьТоваров" ColumnName="СебестоимостьТоваров" />
+          <ScalarProperty Name="УровеньВаловогоДоходаТоварообороту" ColumnName="УровеньВаловогоДоходаТоварообороту" />
+          <ScalarProperty Name="ВаловойДоход" ColumnName="ВаловойДоход" />
+          <ScalarProperty Name="Товарооборот" ColumnName="Товарооборот" />
+          <ScalarProperty Name="IDYearincome" ColumnName="IDYearincome" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ФакторныйАнализПрибыли">
+      <EntityTypeMapping TypeName="IribModel.ФакторныйАнализПрибыли">
+        <MappingFragment StoreEntitySet="ФакторныйАнализПрибыли">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ИзменениеСуммыПрибыли" ColumnName="ИзменениеСуммыПрибыли" />
+          <ScalarProperty Name="СебестоимостьПродукции" ColumnName="СебестоимостьПродукции" />
+          <ScalarProperty Name="СредняяРеализПродукции" ColumnName="СредняяРеализПродукции" />
+          <ScalarProperty Name="КолвоРеализПродукции" ColumnName="КолвоРеализПродукции" />
+          <ScalarProperty Name="ВидПродукции" ColumnName="ВидПродукции" />
+          <ScalarProperty Name="FactoryYearID" ColumnName="FactoryYearID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
